@@ -1,5 +1,5 @@
 {
-  "name": "camunda/camunda-bpm-php-sdk",
+  "name": "kushalhalder/camunda-bpm-php-sdk",
   "description": "PHP SDK for camundaBPM process services",
   "license": "Apache-2.0",
   "minimum-stability": "stable",
