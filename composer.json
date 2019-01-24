@@ -1,14 +1,14 @@
 {
-  "name": "camunda/camunda-bpm-php-sdk",
+  "name": "kushalhalder/camunda-bpm-php-sdk",
   "description": "PHP SDK for camundaBPM process services",
   "license": "Apache-2.0",
   "minimum-stability": "stable",
-  "keywords": ["sdk","camunda", "camunda bpm"],
+  "keywords": ["sdk","camunda", "camunda bpm", "php", "camunda php"],
   "homepage": "http://camunda.org",
   "authors": [
     {
-      "name": "Stefan Hentschel",
-      "email": "stefan.hentschel@camunda.com"
+      "name": "Kushal Halder",
+      "email": "krazykushal@gmail.com"
     }
   ],
 
