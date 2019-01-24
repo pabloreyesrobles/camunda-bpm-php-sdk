@@ -9,7 +9,9 @@
 
 namespace org\camunda\php\sdk;
 
+use org\camunda\php\sdk\entity\response\ExternalTask;
 use org\camunda\php\sdk\service\AuthorizationService;
+use org\camunda\php\sdk\service\ExternalTaskService;
 use org\camunda\php\sdk\service\GroupService;
 use org\camunda\php\sdk\service\HistoryService;
 use org\camunda\php\sdk\service\IdentityService;
@@ -41,6 +43,7 @@ class Api {
   public $authorization;
   public $history;
   public $identity;
+  public $externalTask;
 
   // CONFIG
   private $restApiUrl = 'http://localhost:8080/engine-rest/';
@@ -64,5 +67,6 @@ class Api {
     $this->task               = new TaskService($this->restApiUrl);
     $this->user               = new UserService($this->restApiUrl);
     $this->variableInstance   = new VariableInstanceService($this->restApiUrl);
+    $this->externalTask       = new ExternalTaskService($this->restApiUrl);
   }
 }
