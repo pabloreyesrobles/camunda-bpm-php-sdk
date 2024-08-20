@@ -20,9 +20,13 @@ class RequestService {
   private $requestUrl;
   private $http_status_code;
   private $restApiUrl;
+  private $user;
+  private $password;
 
-  public function __construct($restApiUrl) {
+  public function __construct($restApiUrl, $user=null, $password=null) {
     $this->restApiUrl = $restApiUrl;
+    $this->user = $user;
+    $this->password = $password;
   }
 
   /**
@@ -154,6 +158,13 @@ class RequestService {
           $ch = curl_init($this->restApiUrl.$this->requestUrl);
           curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'OPTIONS');
           curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+          // auth is an array with 2 elements: username and password
+          if($this->auth != null) {
+            curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+            curl_setopt($ch, CURLOPT_USERPWD, $this->auth['username'].':'.$this->auth['password']);
+          }
+
           $request = curl_exec($ch);
           $this->http_status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
           curl_close($ch);
@@ -179,6 +190,12 @@ class RequestService {
             'Content-Type: application/json',
             'Content-Length: '.strlen($data)
           ));
+
+          if($this->user != null && $this->password != null) {
+            curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+            curl_setopt($ch, CURLOPT_USERPWD, $this->user.':'.$this->password);
+          }
+
           $request = curl_exec($ch);
           $this->http_status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
           curl_close($ch);
@@ -207,6 +224,11 @@ class RequestService {
             'Content-Type: application/json',
             'Content-Length: '.strlen($data)
           ));
+          
+          if($this->user != null && $this->password != null) {
+            curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+            curl_setopt($ch, CURLOPT_USERPWD, $this->user.':'.$this->password);
+          }
 
           $request = curl_exec($ch);
           $this->http_status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -237,6 +259,12 @@ class RequestService {
             'Content-Type: application/json',
             'Content-Length: '.strlen($data)
           ));
+
+          if($this->user != null && $this->password != null) {
+            curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+            curl_setopt($ch, CURLOPT_USERPWD, $this->user.':'.$this->password);
+          }
+
           $request = curl_exec($ch);
           $this->http_status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
           curl_close($ch);
@@ -263,6 +291,11 @@ class RequestService {
         curl_setopt ($ch, CURLOPT_COOKIEJAR, './');
         curl_setopt ($ch, CURLOPT_COOKIEFILE, './');
         curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
+
+        if($this->user != null && $this->password != null) {
+          curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+          curl_setopt($ch, CURLOPT_USERPWD, $this->user.':'.$this->password);
+        }
 
         $request = curl_exec($ch);
         $this->http_status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
