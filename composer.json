@@ -1,14 +1,14 @@
 {
-  "name": "kushalhalder/camunda-bpm-php-sdk",
+  "name": "pabloreyesrobles/camunda-bpm-php-sdk",
   "description": "PHP SDK for camundaBPM process services",
   "license": "Apache-2.0",
   "minimum-stability": "stable",
-  "keywords": ["sdk","camunda", "camunda bpm", "php", "camunda php"],
+  "keywords": ["sdk", "camunda", "camunda bpm", "php", "camunda php"],
   "homepage": "http://camunda.org",
   "authors": [
     {
-      "name": "Kushal Halder",
-      "email": "krazykushal@gmail.com"
+      "name": "Pablo Reyes Robles",
+      "email": "your-email@example.com"
     }
   ],
 
@@ -30,6 +30,6 @@
   },
 
   "autoload": {
-    "classmap": [ "oop/main/", "procedual/main"]
+    "classmap": ["oop/main/", "procedual/main"]
   }
 }
